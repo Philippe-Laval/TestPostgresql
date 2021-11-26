@@ -13,7 +13,6 @@ Console.WriteLine("Hello, Postgresql!");
 // when interacting with PostgreSQL, just as you would use e.g. DateTime
 NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
 
-
 var test = new PostgresqlTester();
 // await test.Test1();
 // await test.Test2();
