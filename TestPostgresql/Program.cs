@@ -3,13 +3,20 @@
 
 
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using TestPostgresql;
 
 Console.WriteLine("Hello, Postgresql!");
 
+// Once this is done, you can simply use NodaTime types
+// when interacting with PostgreSQL, just as you would use e.g. DateTime
+NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
+
+
 var test = new PostgresqlTester();
 // await test.Test1();
-await test.Test2();
+// await test.Test2();
+await test.Test3();
 
 await using var ctx = new BlogContext();
 //await ctx.Database.EnsureDeletedAsync();
