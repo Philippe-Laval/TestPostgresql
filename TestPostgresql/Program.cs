@@ -1,6 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-
+﻿// Npgsql Entity Framework Core Provider
+// https://www.npgsql.org/efcore/index.html
+// Use of nodatime in EF Core
+// https://www.npgsql.org/efcore/mapping/nodatime.html
 
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
@@ -16,7 +17,7 @@ NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
 var test = new PostgresqlTester();
 // await test.Test1();
 // await test.Test2();
-await test.Test3();
+// await test.Test3();
 
 await using var ctx = new BlogContext();
 //await ctx.Database.EnsureDeletedAsync();
