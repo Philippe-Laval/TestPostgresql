@@ -5,12 +5,20 @@ using Microsoft.EntityFrameworkCore;
 Console.WriteLine("Hello, World!");
 
 await using var ctx = new BlogContext();
-await ctx.Database.EnsureDeletedAsync();
+//await ctx.Database.EnsureDeletedAsync();
 await ctx.Database.EnsureCreatedAsync();
 
-// Insert a Blog
-ctx.Blogs.Add(new Blog() { Name = "FooBlog" });
-await ctx.SaveChangesAsync();
+var fooBlog = await ctx.Blogs.FirstOrDefaultAsync(o => o.Name.Equals("FooBlog"));
+if (fooBlog == null)
+{
+    // Insert a Blog
+    ctx.Blogs.Add(new Blog() { Name = "FooBlog" });
+    await ctx.SaveChangesAsync();
+}
 
 // Query all blogs who's name starts with F
-var fBlogs = await ctx.Blogs.Where(b => b.Name.StartsWith("F")).ToListAsync();
+var blogs = await ctx.Blogs.Where(b => b.Name.StartsWith("F")).ToListAsync();
+foreach (var blog in blogs)
+{
+    Console.WriteLine($"{blog.Id} {blog.Name}");
+}
