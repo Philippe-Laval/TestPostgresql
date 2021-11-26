@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 
+namespace TestPostgresql;
+
 public class BlogContext : DbContext
 {
     public DbSet<Blog> Blogs { get; set; }

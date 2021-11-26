@@ -1,8 +1,15 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Microsoft.EntityFrameworkCore;
 
-Console.WriteLine("Hello, World!");
+
+using Microsoft.EntityFrameworkCore;
+using TestPostgresql;
+
+Console.WriteLine("Hello, Postgresql!");
+
+var test = new PostgresqlTester();
+// await test.Test1();
+await test.Test2();
 
 await using var ctx = new BlogContext();
 //await ctx.Database.EnsureDeletedAsync();
